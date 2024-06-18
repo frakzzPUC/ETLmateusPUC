@@ -7,9 +7,9 @@ Fabricio Martello Martins  RA:22002646
 Lucas Canto  RA: 22018007
 
 npm install: Instala as dependencias 
-npm start: Compila o TypeScript e inicia o servidor.
-npx tsc: Compila os arquivos TypeScript para JavaScript.
 node setupDataBase.js: Executa o script de configuração do banco de dados.
+npx tsc: Compila os arquivos TypeScript para JavaScript.
+npm start: Compila o TypeScript e inicia o servidor.
 
 O servidor estará rodando em http://localhost:3000.
 
