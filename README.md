@@ -32,8 +32,10 @@ EXEMPLO:
 {
   "tipo": "compra",
   "quantidade": 15,
-  "usuario": "usuario1"
+  "usuario": "usuario1",
+  "acao": "Apple"
 }
+
 
 
 Cancelar Ordem

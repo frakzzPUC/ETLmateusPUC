@@ -12,9 +12,9 @@ export function routes(app: Express) {
   });
 
   app.post('/ordens', async (req: Request, res: Response) => {
-    const { tipo, quantidade, usuario } = req.body;
+    const { tipo, quantidade, usuario, acao } = req.body;
     try {
-      const resultado = await criarOrdem(tipo, quantidade, usuario);
+      const resultado = await criarOrdem(tipo, quantidade, usuario, acao);
       res.json(resultado);
     } catch (error) {
       res.status(500).send('Erro ao criar ordem');

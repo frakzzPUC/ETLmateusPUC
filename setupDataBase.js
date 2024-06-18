@@ -1,7 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 const sqlite = require('sqlite');
 
-// Função para abrir o banco de dados
 async function openDb() {
   return sqlite.open({
     filename: './data.db',
@@ -9,7 +8,6 @@ async function openDb() {
   });
 }
 
-// Função para criar as tabelas
 async function createTables() {
   const db = await openDb();
   await db.exec(`
@@ -23,13 +21,13 @@ async function createTables() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       tipo TEXT NOT NULL,
       quantidade INTEGER NOT NULL,
-      usuario TEXT NOT NULL
+      usuario TEXT NOT NULL,
+      acao TEXT NOT NULL
     );
   `);
   await db.close();
 }
 
-// Função para inserir dados de exemplo
 async function insertData() {
   const db = await openDb();
   await db.run(`
@@ -47,23 +45,21 @@ async function insertData() {
   `);
 
   await db.run(`
-    INSERT INTO ordens (tipo, quantidade, usuario) VALUES
-    ('compra', 10, 'user1'),
-    ('venda', 5, 'user2'),
-    ('compra', 20, 'user3'),
-    ('venda', 10, 'user1'),
-    ('compra', 15, 'user2'),
-    ('venda', 12, 'user4'),
-    ('compra', 5, 'user5'),
-    ('venda', 8, 'user3'),
-    ('compra', 22, 'user1'),
-    ('venda', 30, 'user2');
+    INSERT INTO ordens (tipo, quantidade, usuario, acao) VALUES
+    ('compra', 10, 'user1', 'Apple'),
+    ('venda', 5, 'user2', 'Google'),
+    ('compra', 20, 'user3', 'Amazon'),
+    ('venda', 10, 'user1', 'Facebook'),
+    ('compra', 15, 'user2', 'Tesla'),
+    ('venda', 12, 'user4', 'Microsoft'),
+    ('compra', 5, 'user5', 'Netflix'),
+    ('venda', 8, 'user3', 'Boeing'),
+    ('compra', 22, 'user1', 'Visa'),
+    ('venda', 30, 'user2', 'IBM');
   `);
-
   await db.close();
 }
 
-// Executar a criação de tabelas e inserção de dados
 async function setupDatabase() {
   try {
     await createTables();
